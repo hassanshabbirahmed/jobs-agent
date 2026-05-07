@@ -55,6 +55,34 @@ Then run setup:
 /jobs-agent:setup
 ```
 
+### Option C: Codex
+
+Codex uses [Agent Skills](https://developers.openai.com/codex/skills): folders with a `SKILL.md` file plus optional scripts, references, and assets. Codex discovers repo-scoped skills from `.agents/skills` in the current working directory and parent folders up to the repository root, so you can enable jobs-agent only for this checkout without installing it globally.
+
+From this repository:
+
+```bash
+mkdir -p .agents
+ln -s ../skills .agents/skills
+```
+
+If you prefer copying instead of symlinking:
+
+```bash
+mkdir -p .agents/skills
+cp -R skills/* .agents/skills/
+```
+
+To install jobs-agent for a different folder, create that folder's `.agents/skills` directory and copy these skill folders there. Also keep this repo's `shared/` directory at that folder's root, because the skills reference the shared templates and reference docs.
+
+Restart Codex or start a new Codex session from this folder:
+
+```bash
+codex
+```
+
+Codex uses the `name` field in each `SKILL.md`, so explicit skill invocations are `$setup`, `$job-search`, `$tailor-resume`, `$cover-letter`, `$network-scan`, `$apply`, and `$jobsearch-telegram`. The `/jobs-agent:...` commands above are for Claude plugin usage.
+
 ### After installing
 
 Setup will create `~/.jobs-agent/`, prompt you for your resume, configure your job preferences, optionally import your LinkedIn contacts, and conduct a work history interview.
