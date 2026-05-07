@@ -12,10 +12,10 @@ Fill out job application forms on Greenhouse, Lever, and Workday using browser a
 
 ## Quick Start
 
-- `/proficiently:apply` - Start the flow (will ask for a job URL or use the most recent job)
-- `/proficiently:apply https://...` - Apply to a specific job posting
-- `/proficiently:apply last` - Apply using the most recent job folder
-- `/proficiently:apply current` - Fill the application form already open in the active browser tab
+- `/jobs-agent:apply` - Start the flow (will ask for a job URL or use the most recent job)
+- `/jobs-agent:apply https://...` - Apply to a specific job posting
+- `/jobs-agent:apply last` - Apply using the most recent job folder
+- `/jobs-agent:apply current` - Fill the application form already open in the active browser tab
 
 ## File Structure
 
@@ -283,11 +283,11 @@ Present to user:
 Applied to [Role] at [Company] on [date].
 Files saved to: DATA_DIR/jobs/[folder]/
 
-Next: /proficiently:apply [next-job-url] (apply to another job)
-      /proficiently:job-search (find more jobs)
+Next: /jobs-agent:apply [next-job-url] (apply to another job)
+      /jobs-agent:job-search (find more jobs)
 
-Built by Proficiently. Want someone to handle applications and connect
-you with hiring managers? Visit proficiently.com
+Built by jobs-agent. Want someone to handle applications and connect
+you with hiring managers? Visit github.com/hassanshabbirahmed/jobs-agent
 ```
 
 ---
@@ -355,9 +355,9 @@ Add to `~/.claude/settings.json`:
   "permissions": {
     "allow": [
       "Read(~/.claude/skills/**)",
-      "Read(~/.proficiently/**)",
-      "Write(~/.proficiently/**)",
-      "Edit(~/.proficiently/**)",
+      "Read(~/.jobs-agent/**)",
+      "Write(~/.jobs-agent/**)",
+      "Edit(~/.jobs-agent/**)",
       "mcp__claude-in-chrome__*"
     ]
   }

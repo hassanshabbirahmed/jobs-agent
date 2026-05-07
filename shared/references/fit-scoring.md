@@ -1,6 +1,6 @@
 # Fit Scoring Criteria
 
-Standard scoring used across all Proficiently skills for evaluating job-candidate fit.
+Standard scoring used across all jobs-agent skills for evaluating job-candidate fit.
 
 ## Evaluation Process
 

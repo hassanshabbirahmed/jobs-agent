@@ -6,7 +6,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebFetch, WebSearch, mcp__cl
 
 # Job Search Telegram Polling
 
-Poll Telegram for incoming messages and route them to the appropriate Proficiently skill. Runs headlessly via `/loop 1m /proficiently:jobsearch-telegram`.
+Poll Telegram for incoming messages and route them to the appropriate jobs-agent skill. Runs headlessly via `/loop 1m /jobs-agent:jobsearch-telegram`.
 
 ## First-Time Setup
 
@@ -58,7 +58,7 @@ curl -s -X POST "https://api.telegram.org/bot{TOKEN}/sendMessage" \
   -d '{"chat_id": "{CHAT_ID}", "text": "👋 Job search bot connected! Send me a job URL to apply, or say \"search\" to find jobs."}'
 ```
 
-If successful, tell the user setup is complete and they can start the loop with `/loop 1m /proficiently:jobsearch-telegram`.
+If successful, tell the user setup is complete and they can start the loop with `/loop 1m /jobs-agent:jobsearch-telegram`.
 
 ---
 
@@ -346,9 +346,9 @@ Add to `~/.claude/settings.json`:
     "allow": [
       "Bash(curl:*)",
       "Bash(jq:*)",
-      "Read(~/.proficiently/**)",
-      "Write(~/.proficiently/**)",
-      "Edit(~/.proficiently/**)",
+      "Read(~/.jobs-agent/**)",
+      "Write(~/.jobs-agent/**)",
+      "Edit(~/.jobs-agent/**)",
       "Read(~/.claude/skills/**)",
       "mcp__claude-in-chrome__*"
     ]

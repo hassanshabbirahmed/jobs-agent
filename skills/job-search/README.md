@@ -27,7 +27,7 @@ git clone https://github.com/YOUR_USERNAME/job-search-skill.git ~/.claude/skills
 ### 2. Run setup
 
 ```bash
-claude "/proficiently:setup"
+claude "/jobs-agent:setup"
 ```
 
 This will configure your resume, preferences, and work history profile.
@@ -64,9 +64,9 @@ job-search/
     └── evaluate-jobs.md          # Job evaluation subagent
 ```
 
-**User data (at `~/.proficiently/`):**
+**User data (at `~/.jobs-agent/`):**
 ```
-~/.proficiently/
+~/.jobs-agent/
 ├── resume/                       # Your resume PDF/DOCX
 ├── preferences.md                # Job matching rules
 ├── job-history.md                # Log of all jobs found
@@ -75,7 +75,7 @@ job-search/
 
 ## Configuration
 
-### Matching Rules (`~/.proficiently/preferences.md`)
+### Matching Rules (`~/.jobs-agent/preferences.md`)
 
 Customize your job preferences:
 
@@ -107,11 +107,11 @@ Just tell Claude what you want:
 - *"I don't want any roles requiring relocation"*
 - *"Bump my minimum salary to $300k"*
 
-The skill will update `~/.proficiently/preferences.md` automatically.
+The skill will update `~/.jobs-agent/preferences.md` automatically.
 
 ## Job History
 
-All jobs found are logged to `~/.proficiently/job-history.md` with:
+All jobs found are logged to `~/.jobs-agent/job-history.md` with:
 - Date and search terms
 - Job details (title, company, location, salary)
 - Fit score (High/Medium/Low/Skip)

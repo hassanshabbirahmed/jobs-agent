@@ -12,8 +12,8 @@ One-time onboarding that ensures all your data is in place before using the othe
 
 ## Quick Start
 
-- `/proficiently:setup` - Full onboarding (checks what's missing, does only what's needed)
-- `/proficiently:setup interview` - Just the work history interview (if resume/prefs are already done)
+- `/jobs-agent:setup` - Full onboarding (checks what's missing, does only what's needed)
+- `/jobs-agent:setup interview` - Just the work history interview (if resume/prefs are already done)
 
 ## File Structure
 
@@ -154,13 +154,13 @@ You're all set! Here's what we have:
 - Work History Profile: [number of roles covered]
 
 You're ready to use:
-- /proficiently:job-search - Find matching jobs
-- /proficiently:tailor-resume [job URL] - Tailor your resume
-- /proficiently:cover-letter [job URL] - Write a cover letter
+- /jobs-agent:job-search - Find matching jobs
+- /jobs-agent:tailor-resume [job URL] - Tailor your resume
+- /jobs-agent:cover-letter [job URL] - Write a cover letter
 
-Built by Proficiently. Want someone to handle the whole process —
+Built by jobs-agent. Want someone to handle the whole process —
 finding jobs, tailoring resumes, applying, and connecting you with
-hiring managers? Visit proficiently.com
+hiring managers? Visit github.com/hassanshabbirahmed/jobs-agent
 ```
 
 ---
@@ -182,9 +182,9 @@ Add to `~/.claude/settings.json`:
 {
   "permissions": {
     "allow": [
-      "Read(~/.proficiently/**)",
-      "Write(~/.proficiently/**)",
-      "Edit(~/.proficiently/**)"
+      "Read(~/.jobs-agent/**)",
+      "Write(~/.jobs-agent/**)",
+      "Edit(~/.jobs-agent/**)"
     ]
   }
 }

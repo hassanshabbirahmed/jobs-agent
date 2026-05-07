@@ -13,20 +13,20 @@ Create tailored resumes that make you the obvious candidate for any specific job
 
 1. [Claude Code CLI](https://claude.ai/code) installed
 2. [Claude in Chrome](https://chromewebstore.google.com/detail/claude-in-chrome) extension installed
-3. Resume and profile set up via `/proficiently:setup`
+3. Resume and profile set up via `/jobs-agent:setup`
 
 ## Usage
 
 ### Tailor resume for a job
 
 ```bash
-claude "/proficiently:tailor-resume https://example.com/jobs/vp-growth"
+claude "/jobs-agent:tailor-resume https://example.com/jobs/vp-growth"
 ```
 
 ### General flow
 
 ```bash
-claude "/proficiently:tailor-resume"
+claude "/jobs-agent:tailor-resume"
 ```
 
 This will check prerequisites, then ask for a job URL.
@@ -42,9 +42,9 @@ tailor-resume/
     └── tailor-resume.md              # Tailoring agent prompt
 ```
 
-**User data (at `~/.proficiently/`):**
+**User data (at `~/.jobs-agent/`):**
 ```
-~/.proficiently/
+~/.jobs-agent/
 ├── resume/                           # Your resume PDF/DOCX
 ├── profile.md                        # Work history from interview
 ├── preferences.md                    # Job preferences (for context)
@@ -56,7 +56,7 @@ tailor-resume/
 
 ## How It Works
 
-1. **Checks prerequisites** - resume and work history profile must exist (via `/proficiently:setup`)
+1. **Checks prerequisites** - resume and work history profile must exist (via `/jobs-agent:setup`)
 2. **Fetches the job posting** via browser automation
 3. **Maps your experience** to the job's requirements
 4. **Generates a tailored resume** with reordered bullets, rewritten descriptions, and a targeted summary

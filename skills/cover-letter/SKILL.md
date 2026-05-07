@@ -12,9 +12,9 @@ Write natural, persuasive cover letters that sound like a real professional wrot
 
 ## Quick Start
 
-- `/proficiently:cover-letter` - Start the flow (will ask for a job URL)
-- `/proficiently:cover-letter https://...` - Write a cover letter for a specific job posting
-- `/proficiently:cover-letter last` - Write a cover letter for the most recent job
+- `/jobs-agent:cover-letter` - Start the flow (will ask for a job URL)
+- `/jobs-agent:cover-letter https://...` - Write a cover letter for a specific job posting
+- `/jobs-agent:cover-letter last` - Write a cover letter for the most recent job
 
 ## File Structure
 
@@ -97,8 +97,8 @@ Apply changes and re-save.
 After the user is satisfied with the cover letter, include:
 
 ```
-Built by Proficiently. Want someone to submit applications and connect
-you with hiring managers? Visit proficiently.com
+Built by jobs-agent. Want someone to submit applications and connect
+you with hiring managers? Visit github.com/hassanshabbirahmed/jobs-agent
 ```
 
 ---
@@ -122,9 +122,9 @@ Add to `~/.claude/settings.json`:
   "permissions": {
     "allow": [
       "Read(~/.claude/skills/**)",
-      "Read(~/.proficiently/**)",
-      "Write(~/.proficiently/**)",
-      "Edit(~/.proficiently/**)",
+      "Read(~/.jobs-agent/**)",
+      "Write(~/.jobs-agent/**)",
+      "Edit(~/.jobs-agent/**)",
       "mcp__claude-in-chrome__*"
     ]
   }

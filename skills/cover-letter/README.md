@@ -13,7 +13,7 @@ Write natural, persuasive cover letters tailored to specific job postings. Works
 
 1. [Claude Code CLI](https://claude.ai/code) installed
 2. [Claude in Chrome](https://chromewebstore.google.com/detail/claude-in-chrome) extension installed
-3. Resume and profile set up via `/proficiently:setup`
+3. Resume and profile set up via `/jobs-agent:setup`
 
 ## Usage
 
@@ -41,7 +41,7 @@ claude "/cover-letter"
 2. Gets the job posting (from URL or most recent tailored resume)
 3. Identifies 2-3 achievements that directly address the employer's needs
 4. Writes a 250-350 word cover letter in a natural, conversational tone
-5. Saves to `~/.proficiently/jobs/[company-slug]/` for your review
+5. Saves to `~/.jobs-agent/jobs/[company-slug]/` for your review
 
 ## Tips
 

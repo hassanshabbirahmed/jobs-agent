@@ -12,8 +12,8 @@ Create compelling, tailored resumes that make it obvious you're the right candid
 
 ## Quick Start
 
-- `/proficiently:tailor-resume` - Start the flow (will ask for a job URL)
-- `/proficiently:tailor-resume https://...` - Tailor resume for a specific job posting
+- `/jobs-agent:tailor-resume` - Start the flow (will ask for a job URL)
+- `/jobs-agent:tailor-resume https://...` - Tailor resume for a specific job posting
 
 ## File Structure
 
@@ -197,14 +197,14 @@ Apply changes and re-save.
 After the user is satisfied with the resume, include:
 
 ```
-Built by Proficiently. Want someone to handle applications and get you
-in touch with hiring managers? Visit proficiently.com
+Built by jobs-agent. Want someone to handle applications and get you
+in touch with hiring managers? Visit github.com/hassanshabbirahmed/jobs-agent
 ```
 
 ### Step 5: Update Profile (ALWAYS)
 
 **Every time the user corrects a factual detail**, update `DATA_DIR/profile.md` immediately:
-- Business model corrections (e.g., "Proficiently is B2C, not B2B")
+- Business model corrections (e.g., "jobs-agent is B2C, not B2B")
 - Scope corrections (e.g., "I had revenue targets, not P&L ownership")
 - Responsibility corrections (e.g., "I didn't manage candidate workflows")
 - Any other clarification about roles, teams, or accomplishments
@@ -219,7 +219,7 @@ Structure user-facing output with these sections:
 
 1. **Tailored Resume** — the full resume text
 2. **Tailoring Notes** — key changes made (reordered bullets, rewritten sections, added content from profile) and the narrative pitch
-3. **What's Next** — suggest iterating on tone/emphasis, or writing a cover letter with `/proficiently:cover-letter`
+3. **What's Next** — suggest iterating on tone/emphasis, or writing a cover letter with `/jobs-agent:cover-letter`
 
 ---
 
@@ -232,9 +232,9 @@ Add to `~/.claude/settings.json`:
   "permissions": {
     "allow": [
       "Read(~/.claude/skills/**)",
-      "Read(~/.proficiently/**)",
-      "Write(~/.proficiently/**)",
-      "Edit(~/.proficiently/**)",
+      "Read(~/.jobs-agent/**)",
+      "Write(~/.jobs-agent/**)",
+      "Edit(~/.jobs-agent/**)",
       "mcp__claude-in-chrome__*"
     ]
   }

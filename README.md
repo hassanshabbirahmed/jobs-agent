@@ -1,75 +1,75 @@
-# Proficiently
+# jobs-agent
 
-A Claude Code plugin for AI-powered job searching, resume tailoring, and cover letter writing. Built by [Proficiently](https://proficiently.com).
+A Claude Code plugin for AI-powered job searching, resume tailoring, and cover letter writing. Built by [jobs-agent](https://github.com/hassanshabbirahmed/jobs-agent).
 
-> **Want someone to handle your entire job search?** Proficiently finds you jobs, tailors your resume and cover letters, applies on your behalf, and gets you in touch with hiring managers. Visit [proficiently.com](https://proficiently.com) to get started.
+> **Want someone to handle your entire job search?** jobs-agent finds you jobs, tailors your resume and cover letters, applies on your behalf, and gets you in touch with hiring managers. Visit [github.com/hassanshabbirahmed/jobs-agent](https://github.com/hassanshabbirahmed/jobs-agent) to get started.
 
-![proficiently-demo](https://github.com/user-attachments/assets/2f39a093-bf7b-4c43-a7b5-c3e6251440e4)
+![jobs-agent-demo](https://github.com/user-attachments/assets/2f39a093-bf7b-4c43-a7b5-c3e6251440e4)
 
 ## Skills
 
 | Skill | Command | Description |
 |-------|---------|-------------|
-| [Setup](./skills/setup/) | `/proficiently:setup` | One-time onboarding: resume, preferences, LinkedIn contacts, and work history interview |
-| [Job Search](./skills/job-search/) | `/proficiently:job-search` | Automated job search with smart filtering and network matching |
-| [Tailor Resume](./skills/tailor-resume/) | `/proficiently:tailor-resume` | Create tailored resumes for specific job postings |
-| [Cover Letter](./skills/cover-letter/) | `/proficiently:cover-letter` | Write natural, persuasive cover letters |
-| [Network Scan](./skills/network-scan/) | `/proficiently:network-scan` | Scan your contacts' companies for matching job openings |
-| [Apply](./skills/apply/) | `/proficiently:apply` | Fill out job applications on Greenhouse, Lever, and Workday |
-| [Telegram Loop](./skills/jobsearch-telegram/) | `/proficiently:jobsearch-telegram` | Headless job search assistant via Telegram — apply, search, and check status by chat |
+| [Setup](./skills/setup/) | `/jobs-agent:setup` | One-time onboarding: resume, preferences, LinkedIn contacts, and work history interview |
+| [Job Search](./skills/job-search/) | `/jobs-agent:job-search` | Automated job search with smart filtering and network matching |
+| [Tailor Resume](./skills/tailor-resume/) | `/jobs-agent:tailor-resume` | Create tailored resumes for specific job postings |
+| [Cover Letter](./skills/cover-letter/) | `/jobs-agent:cover-letter` | Write natural, persuasive cover letters |
+| [Network Scan](./skills/network-scan/) | `/jobs-agent:network-scan` | Scan your contacts' companies for matching job openings |
+| [Apply](./skills/apply/) | `/jobs-agent:apply` | Fill out job applications on Greenhouse, Lever, and Workday |
+| [Telegram Loop](./skills/jobsearch-telegram/) | `/jobs-agent:jobsearch-telegram` | Headless job search assistant via Telegram — apply, search, and check status by chat |
 
 ## How They Work Together
 
-1. **`/proficiently:setup`** uploads your resume, configures preferences, imports LinkedIn contacts, and conducts a work history interview (one-time)
-2. **`/proficiently:job-search`** finds jobs that match your preferences and resume, flags companies where you have connections
-3. **`/proficiently:tailor-resume`** rewrites your resume for a specific job posting, saves the job posting and tailored resume together
-4. **`/proficiently:cover-letter last`** writes a cover letter using the most recent job's posting and tailored resume
-5. **`/proficiently:apply last`** fills out the application form on Greenhouse, Lever, or Workday using your tailored resume and cover letter
-6. **`/proficiently:network-scan`** scans your LinkedIn contacts' companies for matching openings (leverages your network for warm intros)
-7. **`/loop 1m /proficiently:jobsearch-telegram`** runs the Telegram bot in the background — send a job URL or "search [keywords]" from your phone to trigger any of the above automatically
+1. **`/jobs-agent:setup`** uploads your resume, configures preferences, imports LinkedIn contacts, and conducts a work history interview (one-time)
+2. **`/jobs-agent:job-search`** finds jobs that match your preferences and resume, flags companies where you have connections
+3. **`/jobs-agent:tailor-resume`** rewrites your resume for a specific job posting, saves the job posting and tailored resume together
+4. **`/jobs-agent:cover-letter last`** writes a cover letter using the most recent job's posting and tailored resume
+5. **`/jobs-agent:apply last`** fills out the application form on Greenhouse, Lever, or Workday using your tailored resume and cover letter
+6. **`/jobs-agent:network-scan`** scans your LinkedIn contacts' companies for matching openings (leverages your network for warm intros)
+7. **`/loop 1m /jobs-agent:jobsearch-telegram`** runs the Telegram bot in the background — send a job URL or "search [keywords]" from your phone to trigger any of the above automatically
 
-All skills share a `~/.proficiently/` directory for personal files. Each job application gets its own folder containing the posting, tailored resume, and cover letter.
+All skills share a `~/.jobs-agent/` directory for personal files. Each job application gets its own folder containing the posting, tailored resume, and cover letter.
 
 ## Installation
 
 ### Option A: Claude Cowork (desktop app)
 
 1. Download [Claude Cowork](https://claude.com/product/cowork) if you haven't already
-2. Download the plugin as a zip from GitHub: [Download ZIP](https://github.com/proficientlyjobs/proficiently-claude-skills/archive/refs/heads/main.zip)
+2. Download the plugin as a zip from GitHub: [Download ZIP](https://github.com/hassanshabbirahmed/jobs-agent/archive/refs/heads/main.zip)
 3. In Cowork, go to **Plugins** (left sidebar) and click the **+** button
 4. Select **Upload plugin**
 5. Drag and drop the downloaded zip file, then click **Upload**
-6. Run `/proficiently:setup` to get started
+6. Run `/jobs-agent:setup` to get started
 
 ### Option B: Claude Code CLI
 
 First, add the repository as a marketplace:
 
 ```bash
-claude plugin marketplace add https://github.com/proficientlyjobs/proficiently-claude-skills.git
+claude plugin marketplace add https://github.com/hassanshabbirahmed/jobs-agent.git
 ```
 
 Then install the plugin:
 
 ```bash
-claude plugin install proficiently@proficiently
+claude plugin install jobs-agent@jobs-agent
 ```
 
 Then run setup:
 
 ```
-/proficiently:setup
+/jobs-agent:setup
 ```
 
 ### After installing
 
-Setup will create `~/.proficiently/`, prompt you for your resume, configure your job preferences, optionally import your LinkedIn contacts, and conduct a work history interview.
+Setup will create `~/.jobs-agent/`, prompt you for your resume, configure your job preferences, optionally import your LinkedIn contacts, and conduct a work history interview.
 
 You can also add your resume manually first:
 
 ```bash
-mkdir -p ~/.proficiently/resume
-cp /path/to/your/resume.pdf ~/.proficiently/resume/
+mkdir -p ~/.jobs-agent/resume
+cp /path/to/your/resume.pdf ~/.jobs-agent/resume/
 ```
 
 ## Prerequisites
@@ -82,7 +82,7 @@ cp /path/to/your/resume.pdf ~/.proficiently/resume/
 
 **Plugin (installed via marketplace):**
 ```
-proficiently-claude-skills/
+jobs-agent/
 ├── .claude-plugin/
 │   └── plugin.json                     # Plugin manifest
 ├── shared/
@@ -120,9 +120,9 @@ proficiently-claude-skills/
 └── README.md
 ```
 
-**User data (created by `/proficiently:setup`, persists across plugin updates):**
+**User data (created by `/jobs-agent:setup`, persists across plugin updates):**
 ```
-~/.proficiently/
+~/.jobs-agent/
 ├── resume/                             # Your resume PDF/DOCX
 ├── profile.md                          # Work history from interview
 ├── preferences.md                      # Job matching rules
@@ -140,9 +140,9 @@ proficiently-claude-skills/
     └── ...
 ```
 
-## Built by Proficiently
+## Built by jobs-agent
 
-This plugin is free and open source. If you'd rather have someone handle the whole process for you — finding jobs, tailoring resumes, writing cover letters, submitting applications, and connecting you with hiring managers — visit [proficiently.com](https://proficiently.com).
+This plugin is free and open source. If you'd rather have someone handle the whole process for you — finding jobs, tailoring resumes, writing cover letters, submitting applications, and connecting you with hiring managers — visit [github.com/hassanshabbirahmed/jobs-agent](https://github.com/hassanshabbirahmed/jobs-agent).
 
 ## License
 

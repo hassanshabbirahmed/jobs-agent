@@ -15,23 +15,23 @@ Proactively scan your LinkedIn contacts' companies for job openings that match y
 1. [Claude Code CLI](https://claude.ai/code) installed
 2. [Claude in Chrome](https://chromewebstore.google.com/detail/claude-in-chrome) extension installed
 3. Chrome browser running with the extension active
-4. LinkedIn contacts imported via `/proficiently:setup`
+4. LinkedIn contacts imported via `/jobs-agent:setup`
 
 ## Usage
 
 ### Scan recent contacts (default: 25)
 ```bash
-claude "/proficiently:network-scan"
+claude "/jobs-agent:network-scan"
 ```
 
 ### Scan a specific number
 ```bash
-claude "/proficiently:network-scan 50"
+claude "/jobs-agent:network-scan 50"
 ```
 
 ### Scan all contacts
 ```bash
-claude "/proficiently:network-scan all"
+claude "/jobs-agent:network-scan all"
 ```
 
 ## File Structure
@@ -45,9 +45,9 @@ network-scan/
     └── evaluate-company.md       # Company evaluation subagent
 ```
 
-**User data (at `~/.proficiently/`):**
+**User data (at `~/.jobs-agent/`):**
 ```
-~/.proficiently/
+~/.jobs-agent/
 ├── linkedin-contacts.csv         # LinkedIn contacts export
 ├── company-careers.json          # Cached careers page URLs
 ├── network-scan-history.md       # Log of all scan results
@@ -66,7 +66,7 @@ network-scan/
 
 ## Careers Cache
 
-The skill maintains `~/.proficiently/company-careers.json` to avoid re-discovering careers pages on every run. Cache entries expire after 7 days and are automatically refreshed.
+The skill maintains `~/.jobs-agent/company-careers.json` to avoid re-discovering careers pages on every run. Cache entries expire after 7 days and are automatically refreshed.
 
 Supported careers page types:
 - **direct** - company's own careers page (e.g., careers.google.com)
@@ -85,16 +85,16 @@ Tell Claude to update entries:
 ## Troubleshooting
 
 ### "No LinkedIn contacts found"
-Run `/proficiently:setup` and import your LinkedIn contacts CSV.
+Run `/jobs-agent:setup` and import your LinkedIn contacts CSV.
 
 ### Careers pages not resolving
 Make sure Chrome is running and the Claude in Chrome extension is active. Some small companies may not have public careers pages.
 
 ### Too many companies to scan
-Start with a smaller number: `/proficiently:network-scan 10`. Increase once you've confirmed it works.
+Start with a smaller number: `/jobs-agent:network-scan 10`. Increase once you've confirmed it works.
 
 ### Stale results
-The careers cache refreshes every 7 days. To force a refresh, delete `~/.proficiently/company-careers.json` and re-run.
+The careers cache refreshes every 7 days. To force a refresh, delete `~/.jobs-agent/company-careers.json` and re-run.
 
 ## License
 

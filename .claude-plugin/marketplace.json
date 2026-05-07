@@ -1,25 +1,25 @@
 {
-  "name": "proficiently",
+  "name": "jobs-agent",
   "owner": {
-    "name": "Proficiently",
-    "email": "zak@proficiently.com"
+    "name": "jobs-agent",
+    "email": "jobs-agent@example.com"
   },
   "metadata": {
     "description": "AI-powered job search, resume tailoring, and cover letter writing"
   },
   "plugins": [
     {
-      "name": "proficiently",
+      "name": "jobs-agent",
       "source": {
         "source": "github",
-        "repo": "proficientlyjobs/proficiently-claude-skills"
+        "repo": "hassanshabbirahmed/jobs-agent"
       },
       "description": "AI-powered job search, resume tailoring, and cover letter writing",
       "version": "1.0.0",
       "author": {
-        "name": "Proficiently"
+        "name": "jobs-agent"
       },
-      "repository": "https://github.com/proficientlyjobs/proficiently-claude-skills",
+      "repository": "https://github.com/hassanshabbirahmed/jobs-agent",
       "license": "MIT",
       "keywords": ["job-search", "resume", "cover-letter", "career"],
       "category": "productivity"

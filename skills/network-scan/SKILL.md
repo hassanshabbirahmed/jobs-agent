@@ -12,9 +12,9 @@ Proactively check whether companies where you know someone are hiring for roles 
 
 ## Quick Start
 
-- `/proficiently:network-scan` - Scan companies from your 25 most recent contacts
-- `/proficiently:network-scan 50` - Check the 50 most recent contacts
-- `/proficiently:network-scan all` - Check all contacts (can be slow with 1500+)
+- `/jobs-agent:network-scan` - Scan companies from your 25 most recent contacts
+- `/jobs-agent:network-scan 50` - Check the 50 most recent contacts
+- `/jobs-agent:network-scan all` - Check all contacts (can be slow with 1500+)
 
 ## File Structure
 
@@ -24,9 +24,9 @@ scripts/
   evaluate-company.md    # Subagent for scanning a batch of companies' open roles
 ```
 
-User data (stored at ~/.proficiently/):
+User data (stored at ~/.jobs-agent/):
 ```
-~/.proficiently/
+~/.jobs-agent/
   resume/                # Your resume PDF/DOCX
   preferences.md         # Job matching rules
   profile.md             # Work history from interview
@@ -56,7 +56,7 @@ Parse `$ARGUMENTS`:
 - If `all`: use all contacts (warn user this may be slow if > 200)
 - If empty/missing: default to 25
 
-Read `~/.proficiently/linkedin-contacts.csv`. Sort by "Connected On" descending (most recent first). Take the first N contacts based on the limit.
+Read `~/.jobs-agent/linkedin-contacts.csv`. Sort by "Connected On" descending (most recent first). Take the first N contacts based on the limit.
 
 Extract unique company names from the selected contacts. Skip companies with empty or blank names.
 
@@ -72,7 +72,7 @@ Report to user: "Found X unique companies from Y contacts. Checking careers page
 
 ### Step 2: Resolve Careers Pages (Parallelized)
 
-Load `~/.proficiently/company-careers.json` if it exists (the cache). If it doesn't exist, start with an empty object.
+Load `~/.jobs-agent/company-careers.json` if it exists (the cache). If it doesn't exist, start with an empty object.
 
 Split companies into three groups:
 - **Cached (fresh)**: `last_checked` within last 7 days - use as-is, no work needed
@@ -101,7 +101,7 @@ Each subagent uses `WebSearch` (NOT the browser) to find careers pages:
    - `"not_found"` - no careers page could be found (set `careers_url` to null)
 4. Return results for the batch
 
-Collect results from all subagents and merge into the cache. Save `~/.proficiently/company-careers.json`. Format:
+Collect results from all subagents and merge into the cache. Save `~/.jobs-agent/company-careers.json`. Format:
 ```json
 {
   "Company Name": {
@@ -153,7 +153,7 @@ If a subagent fails or times out, log the companies it was processing and move o
 **Update company-careers.json:**
 Update `last_checked` and `last_found_roles` for every company that was scanned.
 
-**Append to `~/.proficiently/network-scan-history.md`:**
+**Append to `~/.jobs-agent/network-scan-history.md`:**
 
 If the file doesn't exist, create it with:
 ```markdown
@@ -177,7 +177,7 @@ Then append:
 Include all companies scanned (both matches and non-matches) in the table.
 
 **Save full postings for High-fit matches:**
-For each High-fit match, navigate to the job posting URL and save the full posting to `~/.proficiently/jobs/[company-slug]-[YYYY-MM-DD]/posting.md` using the standard format:
+For each High-fit match, navigate to the job posting URL and save the full posting to `~/.jobs-agent/jobs/[company-slug]-[YYYY-MM-DD]/posting.md` using the standard format:
 
 ```markdown
 # [Job Title] - [Company Name]
@@ -246,16 +246,16 @@ Scanned N companies from M contacts. No matching roles found this time.
 ### Companies Without Careers Pages
 [List]
 
-Try again next week, or expand your search: `/proficiently:network-scan 100`
+Try again next week, or expand your search: `/jobs-agent:network-scan 100`
 ```
 
 End with:
 ```
-To tailor a resume: /proficiently:tailor-resume [job URL]
-To write a cover letter: /proficiently:cover-letter [job URL]
+To tailor a resume: /jobs-agent:tailor-resume [job URL]
+To write a cover letter: /jobs-agent:cover-letter [job URL]
 
-Built by Proficiently. Want someone to find jobs, tailor resumes,
-apply, and connect you with hiring managers? Visit proficiently.com
+Built by jobs-agent. Want someone to find jobs, tailor resumes,
+apply, and connect you with hiring managers? Visit github.com/hassanshabbirahmed/jobs-agent
 ```
 
 ### Step 6: Learn from Feedback
@@ -264,7 +264,7 @@ If the user provides feedback after seeing results:
 
 - **"Skip [company]"**: Add `"ignored": true` to that company's entry in company-careers.json. Future scans will skip it.
 - **Corrects a careers URL**: Update the cache entry with the correct URL and type.
-- **Adjusts preferences**: Update `~/.proficiently/preferences.md` accordingly (e.g., "add fintech to nice-to-haves", "no crypto companies").
+- **Adjusts preferences**: Update `~/.jobs-agent/preferences.md` accordingly (e.g., "add fintech to nice-to-haves", "no crypto companies").
 
 ---
 
@@ -274,7 +274,7 @@ Structure user-facing output with these sections:
 
 1. **Network Matches** — list of High/Medium fits with company, role, fit rating, contact name, and apply URL
 2. **Companies Checked** — summary of companies with no matches and companies without careers pages
-3. **Next Steps** — suggest `/proficiently:tailor-resume` and `/proficiently:cover-letter` for top matches
+3. **Next Steps** — suggest `/jobs-agent:tailor-resume` and `/jobs-agent:cover-letter` for top matches
 
 ---
 
@@ -287,9 +287,9 @@ Add to `~/.claude/settings.json`:
   "permissions": {
     "allow": [
       "Read(~/.claude/skills/**)",
-      "Read(~/.proficiently/**)",
-      "Write(~/.proficiently/**)",
-      "Edit(~/.proficiently/**)",
+      "Read(~/.jobs-agent/**)",
+      "Write(~/.jobs-agent/**)",
+      "Edit(~/.jobs-agent/**)",
       "mcp__claude-in-chrome__*"
     ]
   }
