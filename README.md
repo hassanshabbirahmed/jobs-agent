@@ -1,12 +1,6 @@
 # jobs-agent
 
-A Claude Code plugin for AI-powered job searching, resume tailoring, and cover letter writing. Built by [jobs-agent](https://github.com/hassanshabbirahmed/jobs-agent).
-
-> **Want someone to handle your entire job search?** jobs-agent finds you jobs, tailors your resume and cover letters, applies on your behalf, and gets you in touch with hiring managers. Visit [github.com/hassanshabbirahmed/jobs-agent](https://github.com/hassanshabbirahmed/jobs-agent) to get started.
-
-![jobs-agent-demo](https://github.com/user-attachments/assets/2f39a093-bf7b-4c43-a7b5-c3e6251440e4)
-
-## Skills
+A agent skill / claude plugin for AI-powered job searching, resume tailoring, and cover letter writing. 
 
 | Skill | Command | Description |
 |-------|---------|-------------|
