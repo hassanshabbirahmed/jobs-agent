@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jobs-agent Workshop Slides</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/theme/white.css">
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5c697c;
+      --line: #d7dee8;
+      --blue: #2563eb;
+      --green: #16a34a;
+      --orange: #f97316;
+      --purple: #7c3aed;
+      --red: #dc2626;
+      --paper: #f8fafc;
+    }
+
+    html,
+    body {
+      background: #e9eef6;
+    }
+
+    .reveal {
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    .reveal .slides {
+      text-align: left;
+    }
+
+    .reveal .slides section {
+      background:
+        linear-gradient(90deg, rgba(37, 99, 235, 0.08), transparent 44%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid rgba(22, 32, 51, 0.08);
+      box-sizing: border-box;
+      height: 720px;
+      overflow: hidden;
+      padding: 44px 62px;
+    }
+
+    .slide {
+      display: grid;
+      gap: 22px;
+      grid-template-rows: auto 1fr auto;
+      height: 100%;
+      width: 100%;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 18px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      margin: 0 0 8px;
+      text-transform: uppercase;
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      color: var(--ink);
+      font-weight: 850;
+      letter-spacing: 0;
+      line-height: 1.04;
+      margin: 0;
+      text-transform: none;
+    }
+
+    .reveal h1 {
+      font-size: 64px;
+      max-width: 980px;
+    }
+
+    .reveal h2 {
+      font-size: 45px;
+      max-width: 1010px;
+    }
+
+    .reveal h3 {
+      font-size: 26px;
+      line-height: 1.14;
+      margin-bottom: 12px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 27px;
+      line-height: 1.32;
+      margin: 18px 0 0;
+      max-width: 940px;
+    }
+
+    .grid-2 {
+      align-items: stretch;
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      align-items: stretch;
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card,
+    .step,
+    .prompt-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(22, 32, 51, 0.08);
+      box-sizing: border-box;
+      min-width: 0;
+      padding: 22px 24px;
+    }
+
+    .card p,
+    .step p,
+    .prompt-card p,
+    .checklist li {
+      color: var(--muted);
+      font-size: 21px;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .step-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .step {
+      align-items: start;
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 52px 1fr;
+      min-height: 100px;
+    }
+
+    .num {
+      align-items: center;
+      background: var(--blue);
+      border-radius: 999px;
+      color: white;
+      display: inline-flex;
+      font-size: 24px;
+      font-weight: 850;
+      height: 52px;
+      justify-content: center;
+      width: 52px;
+    }
+
+    .num.green { background: var(--green); }
+    .num.orange { background: var(--orange); }
+    .num.purple { background: var(--purple); }
+    .num.red { background: var(--red); }
+
+    .prompt-card {
+      display: grid;
+      gap: 14px;
+    }
+
+    .prompt-label {
+      color: var(--blue);
+      font-size: 17px;
+      font-weight: 850;
+      letter-spacing: 0.06em;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .prompt {
+      background: #111827;
+      border-radius: 8px;
+      color: #f8fafc;
+      font-size: 23px;
+      font-weight: 650;
+      line-height: 1.34;
+      margin: 0;
+      min-height: 92px;
+      overflow-wrap: anywhere;
+      padding: 20px 22px;
+    }
+
+    .prompt-card .prompt {
+      color: #f8fafc;
+    }
+
+    .small-prompt {
+      font-size: 20px;
+      min-height: 0;
+      padding: 16px 18px;
+    }
+
+    .url {
+      color: #bfdbfe;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 20px;
+    }
+
+    .mini-flow {
+      align-items: stretch;
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      margin-top: 18px;
+    }
+
+    .pill {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.15;
+      min-height: 64px;
+      padding: 14px 10px;
+      text-align: center;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .checklist li {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      font-size: 23px;
+      line-height: 1.28;
+      list-style: none;
+      padding: 17px 20px;
+    }
+
+    .checklist strong {
+      color: var(--green);
+    }
+
+    .footer {
+      align-items: center;
+      color: var(--muted);
+      display: flex;
+      font-size: 16px;
+      justify-content: space-between;
+      line-height: 1.2;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 750;
+      padding: 8px 12px;
+      white-space: nowrap;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.32;
+      margin: 12px 0 0;
+    }
+
+    .reveal .slide-number {
+      color: var(--muted);
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <div class="slide">
+          <header>
+            <p class="eyebrow">Workshop</p>
+            <h1>Use jobs-agent with the AI assistant you already know</h1>
+            <p class="lead">We will install jobs-agent by pasting a GitHub link into ChatGPT, Claude, Codex, or Claude Code, then use plain English to search, tailor, apply, and follow up.</p>
+          </header>
+          <main>
+            <div class="mini-flow" aria-label="Workshop workflow">
+              <div class="pill">Install</div>
+              <div class="pill">Set up</div>
+              <div class="pill">Search</div>
+              <div class="pill">Review</div>
+              <div class="pill">Apply</div>
+            </div>
+          </main>
+          <footer class="footer">
+            <span>Goal: leave with a repeatable job-search routine, not a list of commands.</span>
+            <span class="tag">10 slides</span>
+          </footer>
+        </div>
+        <aside class="notes">
+          Start by reducing anxiety: the participant does not need to memorize commands. The workshop teaches what to ask the assistant to do.
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide">
+          <header>
+            <p class="eyebrow">Step 1</p>
+            <h2>Install jobs-agent by asking the assistant</h2>
+          </header>
+          <main class="prompt-card">
+            <p class="prompt-label">Copy, paste, and send this</p>
+            <p class="prompt">
+              Please install jobs-agent from this GitHub repo and set it up for this workspace:
+              <br><span class="url">https://github.com/hassanshabbirahmed/jobs-agent</span>
+            </p>
+            <p class="note">Use ChatGPT, Claude, Codex, or Claude Code. If it cannot install tools, ask the instructor for an agent-enabled workspace.</p>
+            <p class="note">Then ask: "Tell me when it is ready, and explain the next step in simple language."</p>
+          </main>
+          <footer class="footer">
+            <span>Have your resume ready before the next slide.</span>
+            <span class="tag">Install first</span>
+          </footer>
+        </div>
+        <aside class="notes">
+          Give participants time to paste the link. If a tool cannot install, pair them with the prepared demo workspace.
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide">
+          <header>
+            <p class="eyebrow">Step 2</p>
+            <h2>Ask jobs-agent to build your job-search profile</h2>
+          </header>
+          <main class="grid-2">
+            <div class="prompt-card">
+              <p class="prompt-label">Say this to the assistant</p>
+              <p class="prompt small-prompt">Help me set up jobs-agent. Use my resume, ask me for my job preferences, and interview me about my work history one question at a time.</p>
+            </div>
+            <div>
+              <ul class="checklist">
+                <li><strong>Resume:</strong> upload the file when asked.</li>
+                <li><strong>Preferences:</strong> role, location, remote rules, salary, industries.</li>
+                <li><strong>Work history:</strong> tell real stories, wins, tools, and responsibilities.</li>
+              </ul>
+            </div>
+          </main>
+          <footer class="footer">
+            <span>Better setup means better matches, resumes, and letters.</span>
+            <span class="tag">One-time setup</span>
+          </footer>
+        </div>
+        <aside class="notes">
+          Encourage concrete answers. "Managed customers" is weaker than "managed 40 enterprise accounts and reduced churn."
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide">
+          <header>
+            <p class="eyebrow">Step 3</p>
+            <h2>Search for jobs with normal language</h2>
+          </header>
+          <main class="grid-2">
+            <div class="prompt-card">
+              <p class="prompt-label">Start broad</p>
+              <p class="prompt small-prompt">Find jobs that match my resume and preferences. Show me the best matches first and explain why each one fits.</p>
+            </div>
+            <div class="prompt-card">
+              <p class="prompt-label">Then narrow it</p>
+              <p class="prompt small-prompt">Search again, but focus on remote customer success roles at B2B software companies posted in the last two weeks.</p>
+            </div>
+          </main>
+          <footer class="footer">
+            <span>You can change the role, industry, location, or seniority in plain English.</span>
+            <span class="tag">Search like a conversation</span>
+          </footer>
+        </div>
+        <aside class="notes">
+          Demonstrate how changing one sentence changes the search. No one needs to know a command name.
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide">
+          <header>
+            <p class="eyebrow">Step 4</p>
+            <h2>Turn search results into a shortlist</h2>
+          </header>
+          <main class="step-list">
+            <div class="step">
+              <span class="num">1</span>
+              <div>
+                <h3>Ask for a simple table</h3>
+                <p>"Make a shortlist with company, role, fit score, why it fits, and any concerns."</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="num green">2</span>
+              <div>
+                <h3>Remove dealbreakers</h3>
+                <p>"Remove roles that require relocation, a visa I do not have, or skills I clearly lack."</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="num orange">3</span>
+              <div>
+                <h3>Pick two or three</h3>
+                <p>"Choose the top three jobs worth tailoring for today."</p>
+              </div>
+            </div>
+          </main>
+          <footer class="footer">
+            <span>The agent saves time; you still choose where to spend your energy.</span>
+            <span class="tag">Quality over quantity</span>
+          </footer>
+        </div>
+        <aside class="notes">
+          This is where participants learn not to apply everywhere. A shortlist protects their attention.
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide">
+          <header>
+            <p class="eyebrow">Step 5</p>
+            <h2>Tailor your resume for one selected job</h2>
+          </header>
+          <main class="grid-2">
+            <div class="prompt-card">
+              <p class="prompt-label">Paste a job link and ask</p>
+              <p class="prompt small-prompt">Tailor my resume for this job posting. Keep it honest, preserve my real experience, and explain what you changed.</p>
+            </div>
+            <div class="card">
+              <h3>Review these details</h3>
+              <p>Company name, job title, dates, metrics, tools, skills, and any claim that sounds stronger than your real experience.</p>
+              <p class="note">If something feels off, say: "Make this more accurate and less exaggerated."</p>
+            </div>
+          </main>
+          <footer class="footer">
+            <span>A tailored resume should be specific, not fictional.</span>
+            <span class="tag">Truth first</span>
+          </footer>
+        </div>
+        <aside class="notes">
+          Stress that AI should not invent credentials. The participant is accountable for the final resume.
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide">
+          <header>
+            <p class="eyebrow">Step 6</p>
+            <h2>Draft a cover letter, then make it sound like you</h2>
+          </header>
+          <main class="grid-2">
+            <div class="prompt-card">
+              <p class="prompt-label">Ask for a first draft</p>
+              <p class="prompt small-prompt">Write a concise cover letter for this job using my tailored resume. Make it specific to the company and avoid generic phrases.</p>
+            </div>
+            <div class="prompt-card">
+              <p class="prompt-label">Then personalize it</p>
+              <p class="prompt small-prompt">Make the tone warmer and simpler. Keep it under one page and make the opening sound less formal.</p>
+            </div>
+          </main>
+          <footer class="footer">
+            <span>Good letters sound like a person who understands the role.</span>
+            <span class="tag">Edit by asking</span>
+          </footer>
+        </div>
+        <aside class="notes">
+          Show one quick revision prompt. Participants should see that they can steer tone without technical knowledge.
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide">
+          <header>
+            <p class="eyebrow">Step 7</p>
+            <h2>Apply with the agent, but check every field</h2>
+          </header>
+          <main class="grid-2">
+            <div class="prompt-card">
+              <p class="prompt-label">Say this before applying</p>
+              <p class="prompt small-prompt">Help me fill this application using the tailored resume and cover letter. Stop before submitting so I can review everything.</p>
+            </div>
+            <div>
+              <ul class="checklist">
+                <li><strong>Check:</strong> name, email, phone, location, and links.</li>
+                <li><strong>Check:</strong> salary, work authorization, and availability.</li>
+                <li><strong>Check:</strong> uploaded files and custom questions.</li>
+              </ul>
+            </div>
+          </main>
+          <footer class="footer">
+            <span>The most important button is not "submit"; it is "review."</span>
+            <span class="tag">Human approval</span>
+          </footer>
+        </div>
+        <aside class="notes">
+          Make this a safety rule. The agent can assist, but participants should never blindly submit.
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide">
+          <header>
+            <p class="eyebrow">Step 8</p>
+            <h2>Track applications and ask for follow-up help</h2>
+          </header>
+          <main class="grid-3">
+            <div class="card">
+              <h3>Track the basics</h3>
+              <p>Company, role, date applied, link, status, and next action.</p>
+            </div>
+            <div class="card">
+              <h3>Use your network</h3>
+              <p>Ask jobs-agent to check contacts or help draft a polite intro request.</p>
+            </div>
+            <div class="card">
+              <h3>Follow up calmly</h3>
+              <p>After a few days, ask for a short follow-up message that sounds natural.</p>
+            </div>
+          </main>
+          <footer class="footer">
+            <span>Applications disappear when they are not tracked. Keep one simple list.</span>
+            <span class="tag">Do not lose leads</span>
+          </footer>
+        </div>
+        <aside class="notes">
+          This slide is about habit. The agent helps participants keep momentum after the workshop.
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide">
+          <header>
+            <p class="eyebrow">Practice Loop</p>
+            <h2>The repeatable routine</h2>
+          </header>
+          <main class="step-list">
+            <div class="step">
+              <span class="num purple">1</span>
+              <div>
+                <h3>Ask for matching jobs</h3>
+                <p>Use a natural sentence with role, location, industry, and must-haves.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="num green">2</span>
+              <div>
+                <h3>Choose one job and tailor</h3>
+                <p>Ask for a tailored resume, review it, then ask for a cover letter.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="num orange">3</span>
+              <div>
+                <h3>Apply, track, follow up</h3>
+                <p>Let the agent help with the form, stop before submission, then log the application.</p>
+              </div>
+            </div>
+          </main>
+          <footer class="footer">
+            <span>AI agent speed plus human judgment is the whole method.</span>
+            <span class="tag">Repeat weekly</span>
+          </footer>
+        </div>
+        <aside class="notes">
+          End with a live exercise: everyone picks one job and writes the next prompt they will send.
+        </aside>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 1.8,
+      controls: true,
+      progress: true,
+      hash: true,
+      slideNumber: "c/t",
+      transition: "slide",
+      plugins: [RevealNotes]
+    });
+  </script>
+</body>
+</html>
