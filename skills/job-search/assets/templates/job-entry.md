@@ -23,3 +23,8 @@ Keep notes brief and actionable:
 - "Crypto - dealbreaker"
 - "Onsite only"
 - "Requires [X] - dealbreaker"
+- "Stale posting - older than 14 days"
+- "Unknown posting date"
+- "Closed posting"
+- "No longer accepting applications"
+- "Employer page could not be checked"
