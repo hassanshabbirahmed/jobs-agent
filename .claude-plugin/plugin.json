@@ -1,0 +1,13 @@
+{
+  "name": "jobs-agent",
+  "description": "AI-powered job search, resume tailoring, and cover letter writing",
+  "version": "1.1.0",
+  "author": {
+    "name": "jobs-agent",
+    "url": "https://github.com/hassanshabbirahmed/jobs-agent"
+  },
+  "homepage": "https://github.com/hassanshabbirahmed/jobs-agent",
+  "repository": "https://github.com/hassanshabbirahmed/jobs-agent",
+  "license": "MIT",
+  "keywords": ["job-search", "resume", "cover-letter", "career", "apply"]
+}
